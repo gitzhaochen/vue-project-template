@@ -1,12 +1,13 @@
 @import "variable.styl"
 
 body, html {
-    font-family: 'PingFang SC', 'STHeitiSC-Light', 'Helvetica-Light', arial, sans-serif, 'Droid Sans Fallback'
-    user-select: text
-    -webkit-tap-highlight-color: transparent
-    font-size $text-size-md
+    font-family "Helvetica Neue", Helvetica, Arial, sans-serif
+    user-select text
+    -webkit-tap-highlight-color transparent
+    font-size $text-size-sm
     background #fff
-    overflow-x: hidden;
+    overflow-x hidden
+    color #333
 }
 
 a {
@@ -15,7 +16,7 @@ a {
 }
 
 .clearfix {
-    &:after {clear:both;content:'.';display:block;width: 0;height: 0;visibility:hidden;}
+    &:after {clear:both;content:'.';display:block;width:0;height:0;visibility:hidden;}
 }
 .fl {
     float left
@@ -38,5 +39,13 @@ a {
 .t-right{
     text-align right
 }
-
-
+.container {
+    position relative
+    margin 0 auto
+    width 1200px
+}
+@media only screen and (max-width $screen-xl-min) {
+    .container{
+        width 90%
+    }
+}
