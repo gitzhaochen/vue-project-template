@@ -11,7 +11,7 @@ const options = merge(common, {
     mode: 'production',
     devtool: 'source-map',
     output: {
-        publicPath: 'https://yuanben-cn.oss-cn-shanghai.aliyuncs.com/admin_cdn/',
+        publicPath: '/',//可配置cdn缓存文件地址
     },
     module: {
         rules: [
