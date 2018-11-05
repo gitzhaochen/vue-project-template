@@ -54,8 +54,8 @@ const options = merge(common, {
             '/server_url': {
                 target: 'https://cn.yuanben.io',
                 pathRewrite: {"^/server_url" : "/v2"},
-                changeOrigin: true,
-                secure: false
+                changeOrigin: true,//传递给后端正确的Host头 true:target host、 false为localhost
+                secure: true //支持 https
             }
         }
     },
