@@ -1,8 +1,4 @@
 import Vue from 'vue'
-import {Message} from 'element-ui'
-
-Vue.component(Message.name, Message)
-
 
 //生成随机数
 export const getUUID = function (len) {
@@ -34,33 +30,10 @@ export const catchError = function (error) {
     if (error.response) {
         switch (error.response.status) {
             case 400:
-                if(error.response.data.message==='Session expired!'){
-                    session('userdata','');
-                    session('permission','');
-                    Vue.prototype.$message({
-                        message: error.response.data.message || '请求参数异常',
-                        type: 'error',
-                        onClose: function () {
-                            location.reload();
-                        }
-                    });
-                }else{
-                    Vue.prototype.$message({
-                        message: error.response.data.message || '请求参数异常',
-                        type: 'error'
-                    });
-                }
-                break;
-            case 401:
-                // session('userdata','');
-                // session('permission','');
-                // Vue.prototype.$message({
-                //     message: error.response.data.message || '密码错误或账号不存在！',
-                //     type: 'warning',
-                //     onClose: function () {
-                //         location.reload();
-                //     }
-                // });
+                Vue.prototype.$message({
+                    message: error.response.data.message || '请求参数异常',
+                    type: 'error'
+                });
                 break;
             case 403:
                 Vue.prototype.$message({
