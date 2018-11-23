@@ -44,7 +44,7 @@ const options = merge(common, {
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         host: 'localhost',
-        port: 1113,
+        port: 1115,
         historyApiFallback: true,// pass router to frontend rendor when url-api not found
         hot: true,
         overlay: {
