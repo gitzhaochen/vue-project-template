@@ -20,6 +20,10 @@ const router = new Router({
             name:'notfound',
             component: notfound,
 
+        },
+        {
+            path: '*',
+            redirect: '/404'
         }
     ],
     scrollBehavior (to, from, savedPosition) {
