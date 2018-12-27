@@ -5,6 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const common = require('./webpack.common.js');
 const options = merge(common, {
@@ -83,6 +84,42 @@ const options = merge(common, {
 
     },
     optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                exclude: /\.min\.js$/, // 过滤掉以".min.js"结尾的文件，我们认为这个后缀本身就是已经压缩好的代码，没必要进行二次压缩
+                cache: true,
+                parallel: true, // 开启并行压缩，充分利用cpu
+                sourceMap: false,
+                extractComments: false, // 移除注释
+                uglifyOptions: {
+                    compress: {
+                        unused: true,
+                        warnings: false,
+                        drop_debugger: true,
+                        drop_console: true
+                    },
+                    mangle: {
+                        safari10: true,
+                    },
+                    output: {
+                        comments: false
+                    }
+                }
+            }),
+            // 用于优化css文件
+            new OptimizeCssAssetsPlugin({
+                assetNameRegExp: /\.css$/g,
+                cssProcessorOptions: {
+                    safe: true,
+                    autoprefixer: { disable: true }, //
+                    mergeLonghand: false,
+                    discardComments: {
+                        removeAll: true // 移除注释
+                    }
+                },
+                canPrint: true
+            })
+        ],
         splitChunks: {
             cacheGroups: {
                 vendor: { // 将第三方模块提取出来
