@@ -4,3 +4,4 @@ dist/
 .idea/
 psd/
 .cache/
+build-dist/

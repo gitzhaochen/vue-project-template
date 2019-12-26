@@ -1,7 +1,7 @@
-@import "variable.styl"
+@import 'variable.styl'
 
 body, html {
-    font-family "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-family 'Helvetica Neue', Helvetica, Arial, sans-serif
     user-select text
     -webkit-tap-highlight-color transparent
     font-size $text-size-sm
@@ -16,36 +16,52 @@ a {
 }
 
 .clearfix {
-    &:after {clear:both;content:'.';display:block;width:0;height:0;visibility:hidden;}
+    &:after {
+        clear both
+        content '.'
+        display block
+        width 0
+        height 0
+        visibility hidden
+    }
 }
+
 .fl {
     float left
 }
+
 .fr {
     float right
 }
-.pr{
+
+.pr {
     position relative
 }
-.pa{
+
+.pa {
     position absolute
 }
-.section{
+
+.section {
     padding 150px 0
 }
-.t-center{
+
+.t-center {
     text-align center
 }
-.t-right{
+
+.t-right {
     text-align right
 }
+
 .container {
     position relative
     margin 0 auto
     width 1200px
 }
-@media only screen and (max-width $screen-xl-min) {
-    .container{
+
+@media only screen and (max-width: $screen-xl-min) {
+    .container {
         width 90%
     }
 }
